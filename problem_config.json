@@ -3,15 +3,9 @@
     "default_params": {
       "instance_file": "instances/022_3_4_EP_RAF_ENP.in"
     },
-    "problem_type": "CarSequencingColor",
+    "problem_type": "Car Sequencing Color Problem",
     "description": "The Car Sequencing Problem with Paint-Shop Batching Constraints requires arranging a production sequence for cars (each belonging to a class with specific option requirements and a color) so that for each option, the number of cars requiring it in any consecutive block (window) does not exceed a given maximum. Additional constraints include a fixed initial part of the sequence and paint-shop batching requirements (e.g., a maximum paint batch size). The objectives (minimizing color changes, high-priority option violations, and low-priority option violations) are combined lexicographically.",
-    "keywords": [
-      "car sequencing",
-      "paint shop",
-      "batching",
-      "scheduling",
-      "CSPLib"
-    ],
+    "keywords": ["car sequencing", "paint shop", "color batching", "scheduling", "combinatorial", "optimization"],
     "data_format": {
       "instance_file": {
         "format": "First line: number of cars, number of options, number of classes, maximum paint batch size, objective order, start position for planification. For each option: maximum number of cars allowed with that option in a block, window size, and a flag (1 for high priority, 0 otherwise). Then, for each class: color, number of cars in this class, and for each option a binary indicator (1 if the class requires the option, 0 otherwise). Finally, one value per car indicating the class originally planned for production."
