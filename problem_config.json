@@ -1,34 +1,40 @@
 {
-    "entry_point": "car_sequencing_color_problem:CarSequencingColorProblem",
-    "default_params": {
-      "instance_file": "instances/022_3_4_EP_RAF_ENP.in"
-    },
-    "problem_type": "Car Sequencing Color Problem",
-    "description": "The Car Sequencing Problem with Paint-Shop Batching Constraints requires arranging a production sequence for cars (each belonging to a class with specific option requirements and a color) so that for each option, the number of cars requiring it in any consecutive block (window) does not exceed a given maximum. Additional constraints include a fixed initial part of the sequence and paint-shop batching requirements (e.g., a maximum paint batch size). The objectives (minimizing color changes, high-priority option violations, and low-priority option violations) are combined lexicographically.",
-    "keywords": ["car sequencing", "paint shop", "color batching", "scheduling", "combinatorial", "optimization"],
-    "data_format": {
-      "instance_file": {
-        "format": "First line: number of cars, number of options, number of classes, maximum paint batch size, objective order, start position for planification. For each option: maximum number of cars allowed with that option in a block, window size, and a flag (1 for high priority, 0 otherwise). Then, for each class: color, number of cars in this class, and for each option a binary indicator (1 if the class requires the option, 0 otherwise). Finally, one value per car indicating the class originally planned for production."
-      }
-    },
-    "decision_variables": {
-      "sequence": {
-        "type": "list of int",
-        "description": "A permutation of indices (0 to nb_positions-1) representing the rearranged production sequence. Positions before the start position must remain fixed."
-      }
-    },
-    "objective": {
-      "type": "minimization",
-      "function": "Lexicographic combination of three objectives: total color changes, total violations for high-priority options, and total violations for low-priority options.",
-      "description": "For each option and each window of the specified size (starting from the given planification start position), count the excess cars requiring that option beyond the allowed maximum. Also count the number of color changes between consecutive cars (from the fixed starting point). Then, combine these objectives lexicographically according to the specified objective order."
-    },
-    "solution_representation": "A list of integers of length equal to the number of cars, representing a permutation of indices into the initial production plan.",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search"
-    ],
-    "notes": "This problem was submitted in the ROADEF Challenge and appears on CSPLib. The instance file must follow the specified format."
-  }
+  "entry_point": "car_sequencing_color_problem:CarSequencingColorProblem",
+  "default_params": {
+    "instance_file": "instances/022_3_4_EP_RAF_ENP.in"
+  },
+  "creator": "Rastion",
+  "type": "problem",
+  "problem_name": "Car sequencing with paint-shop batching constraints problem",
+  "description": "The Car Sequencing Problem with Paint-Shop Batching Constraints requires arranging a production sequence for cars (each belonging to a class with specific option requirements and a color) so that for each option, the number of cars requiring it in any consecutive block (window) does not exceed a given maximum. Additional constraints include a fixed initial part of the sequence and paint-shop batching requirements (e.g., a maximum paint batch size). The objectives (minimizing color changes, high-priority option violations, and low-priority option violations) are combined lexicographically.",
+  "link_to_dataset": "https://github.com/Rastion/car_sequencing_color/blob/main/instances/022_3_4_EP_RAF_ENP.in",
+  "keywords": [
+    "car sequencing",
+    "paint shop",
+    "batching",
+    "CSPLib",
+    "production-scheduling"
+  ],
+  "data_format": {
+    "instance_file": {
+      "format": "First line: number of cars, number of options, number of classes, maximum paint batch size, objective order, start position for planification. For each option: maximum number of cars allowed with that option in a block, window size, and a flag (1 for high priority, 0 otherwise). Then, for each class: color, number of cars in this class, and for each option a binary indicator (1 if the class requires the option, 0 otherwise). Finally, one value per car indicating the class originally planned for production."
+    }
+  },
+  "decision_variables": {
+    "sequence": {
+      "type": "list of int",
+      "description": "A permutation of indices (0 to nb_positions-1) representing the rearranged production sequence. Positions before the start position must remain fixed."
+    }
+  },
+  "objective": {
+    "type": "minimization",
+    "function": "Lexicographic combination of three objectives: total color changes, total violations for high-priority options, and total violations for low-priority options.",
+    "description": "For each option and each window of the specified size (starting from the given planification start position), count the excess cars requiring that option beyond the allowed maximum. Also count the number of color changes between consecutive cars (from the fixed starting point). Then, combine these objectives lexicographically according to the specified objective order."
+  },
+  "solution_representation": "A list of integers of length equal to the number of cars, representing a permutation of indices into the initial production plan.",
+  "formulations": [
+    ""
+  ],
+  "notes": "This problem was submitted in the ROADEF Challenge and appears on CSPLib. The instance file must follow the specified format."
+}
   
